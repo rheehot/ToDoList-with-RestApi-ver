@@ -1,0 +1,22 @@
+.TodoTemplate {
+    width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 6rem;
+    border-radius: 32px;
+    overflow: hidden;
+}
+
+.TodoTitle {
+    background-image: linear-gradient(to right ,  rgb(2, 238, 247) , rgb(10, 145, 150) , rgb(10, 145, 150) , rgb(2, 238, 247));
+    color: white;
+    height: 6rem;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content {
+    background: white;
+}
