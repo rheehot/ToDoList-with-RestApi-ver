@@ -1,8 +1,6 @@
+# ToDo-App - initialize
+
 # React
-
-## ToDo-App
-
-### ToDo-App - initialize
 
 ### React , SASS(SCSS) , Javascript , Html , Css 
 
