@@ -1,7 +1,7 @@
 {
   "name": "todo2",
   "version": "0.1.0",
-  "homepage": "http://wondonghwi.github.io/ToDo-App",
+  "homepage": "http://wondonghwi.github.io/ToDoList-with-RestApi-ver",
   "private": true,
   "dependencies": {
     "classnames": "^2.2.6",
