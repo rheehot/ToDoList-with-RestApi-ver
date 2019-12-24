@@ -4,5 +4,5 @@
 
 [Please click on the link.](https://wondonghwi.github.io/ToDoList-with-RestApi-ver/)
 
-<img src="capture.PNG">
+<img src="capture.png">
 
