@@ -9,17 +9,18 @@ import './TodoListItem.scss';
 
 
 const TodoListItem = ({ todo , onRemove , onToggle, style }) => {
-  const { id, text, checked } = todo;
+  const { uuid, content, completed } = todo;
+
   return (
     <div className="TodoListItem-virtualized" style={style}>
     <div className="TodoListItem">
-      <div className={cn('checkbox', { checked })}
-       onClick={() => onToggle(id)}
+      <div className={cn('checkbox', { completed })}
+       onClick={() => onToggle(uuid, completed)}
        >
-        {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
-        <div className="text">{text}</div>
+        {completed ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
+        <div className="text">{content}</div>
       </div>
-      <div className="remove" onClick={() => onRemove(id)}>
+      <div className="remove" onClick={() => onRemove(uuid)}>
         <MdIndeterminateCheckBox />
       </div>
     </div>

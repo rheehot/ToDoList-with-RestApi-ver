@@ -1,60 +1,80 @@
-import React, { useState , useRef , useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import TodoTemplate from './component/TodoTemplate';
 import TodoInsert from './component/TodoInsert';
 import TodoList from './component/TodoList'
 
-const App = () => {
-  const [todos , setTodos] = useState([
-    {
-      id: 1,
-      text: 'REACT',
-      checked: true,
-    },
-    {
-      id: 2,
-      text: 'JavaScript',
-      checked: true,
-    },
-    {
-      id: 3,
-      text: 'Back-end',
-      checked: false,
-    },
-  ]);
 
-  const nextId = useRef(4);
+const App = () => {
+  const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    const fetchTodos = async () => {
+      const response = await fetch('https://hwitodo.herokuapp.com/api/v1/todos/');
+      const json = await response.json();
+      setTodos(json);
+    }
+    fetchTodos();
+  }, [])
 
   const onInsert = useCallback(
     text => {
-      const todo = {
-        id: nextId.current,
-        text,
-        checked: false,
+      const create = async() => {
+        const rawResponse = await fetch('https://hwitodo.herokuapp.com/api/v1/todos/', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({content: text, completed: false})
+        });
+        const newTodo = await rawResponse.json();
+        setTodos(todos => [...todos, newTodo]);
       };
-        setTodos(todos => todos.concat(todo));
-        nextId.current += 1;
+      create()
     }, []);
 
   const onRemove = useCallback(
-    id => {
-      setTodos(todos => todos.filter(todo => todo.id !== id));
-    }, []);
+    uuid => {
+      const remove = async() => {
+            await fetch(`https://hwitodo.herokuapp.com/api/v1/todos/${uuid}/`, {
+              method: 'DELETE',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+            });
+
+            setTodos(todos => todos.filter(todo => todo.uuid !== uuid));
+          };
+          remove()
+        }, []);
 
   const onToggle = useCallback(
-    id => {
-      setTodos(todos =>
-        todos.map(todo => 
-          todo.id === id ? {...todo, checked: !todo.checked } : todo,
-          ),
-      );
+    (uuid, completed) =>  {
+    const modify = async () => {
+        await fetch(`https://hwitodo.herokuapp.com/api/v1/todos/${uuid}/`, {
+          method: 'PATCH',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ completed: !completed })
+        });
+
+        setTodos(todos => 
+          todos.map(todo => 
+            todo.uuid === uuid ? {...todo, completed: !todo.completed } : todo,
+          ));
+      };
+      modify()
     }, []);
+
 
   return (
     <TodoTemplate>
-    <TodoInsert onInsert = {onInsert}/>
-    <TodoList todos = {todos} onRemove = {onRemove} onToggle = {onToggle} />
+      <TodoInsert onInsert={onInsert} />
+      <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle} />
     </TodoTemplate>
-    ); 
+  );
 };
 
 export default App;
