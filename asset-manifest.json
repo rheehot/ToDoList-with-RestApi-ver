@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/ToDoList-with-RestApi-ver/static/css/main.224edff9.chunk.css",
+    "main.js": "/ToDoList-with-RestApi-ver/static/js/main.1c3353d1.chunk.js",
+    "main.js.map": "/ToDoList-with-RestApi-ver/static/js/main.1c3353d1.chunk.js.map",
+    "runtime-main.js": "/ToDoList-with-RestApi-ver/static/js/runtime-main.2369b4db.js",
+    "runtime-main.js.map": "/ToDoList-with-RestApi-ver/static/js/runtime-main.2369b4db.js.map",
+    "static/js/2.8712a06a.chunk.js": "/ToDoList-with-RestApi-ver/static/js/2.8712a06a.chunk.js",
+    "static/js/2.8712a06a.chunk.js.map": "/ToDoList-with-RestApi-ver/static/js/2.8712a06a.chunk.js.map",
+    "index.html": "/ToDoList-with-RestApi-ver/index.html",
+    "precache-manifest.c48fc18c1f7c2c25d6ba7be82d87cc01.js": "/ToDoList-with-RestApi-ver/precache-manifest.c48fc18c1f7c2c25d6ba7be82d87cc01.js",
+    "service-worker.js": "/ToDoList-with-RestApi-ver/service-worker.js",
+    "static/css/main.224edff9.chunk.css.map": "/ToDoList-with-RestApi-ver/static/css/main.224edff9.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2369b4db.js",
+    "static/js/2.8712a06a.chunk.js",
+    "static/css/main.224edff9.chunk.css",
+    "static/js/main.1c3353d1.chunk.js"
+  ]
+}
